@@ -41,12 +41,11 @@ window.addEventListener('scroll', () => {
 window.addEventListener('load', () => {
     document.body.style.opacity = '1';
     document.body.style.transition = 'none';
-    
-    // Initialize particle network
+
     particleNetwork = new ParticleNetwork();
 });
 
-// Interactive Particle Network System
+
 class ParticleNetwork {
     constructor() {
         this.canvas = null;
@@ -88,7 +87,6 @@ class ParticleNetwork {
         this.ctx = this.canvas.getContext('2d');
         this.resize();
         
-        // Replace the grid background
         const gridBg = document.querySelector('.grid-background');
         if (gridBg) {
             gridBg.style.display = 'none';
@@ -126,11 +124,9 @@ class ParticleNetwork {
     
     updateParticles() {
         this.particles.forEach(particle => {
-            // Update position
             particle.x += particle.vx;
             particle.y += particle.vy;
             
-            // Mouse attraction effect
             const dx = this.mouse.x - particle.x;
             const dy = this.mouse.y - particle.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
@@ -141,7 +137,6 @@ class ParticleNetwork {
                 particle.vy += dy * force * 0.001;
             }
             
-            // Boundary collision
             if (particle.x < 0 || particle.x > this.canvas.width) {
                 particle.vx *= -1;
             }
@@ -149,11 +144,9 @@ class ParticleNetwork {
                 particle.vy *= -1;
             }
             
-            // Keep particles in bounds
             particle.x = Math.max(0, Math.min(this.canvas.width, particle.x));
             particle.y = Math.max(0, Math.min(this.canvas.height, particle.y));
             
-            // Add some friction
             particle.vx *= 0.99;
             particle.vy *= 0.99;
         });
@@ -186,7 +179,6 @@ class ParticleNetwork {
                 }
             }
             
-            // Draw connection to mouse
             const dx = this.mouse.x - this.particles[i].x;
             const dy = this.mouse.y - this.particles[i].y;
             const distance = Math.sqrt(dx * dx + dy * dy);
@@ -223,5 +215,4 @@ class ParticleNetwork {
     }
 }
 
-// Initialize particle network when page loads
 let particleNetwork;
