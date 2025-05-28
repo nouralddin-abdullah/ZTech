@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - Ztech</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .team-member {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 64, 0.1));
+            border: 1px solid #00ffff;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ffff, #ff0040, #00ffff);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .team-member:hover::before {
+            opacity: 1;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00ffff, #ff0040);
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            color: #00ffff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .member-role {
+            font-size: 1.1rem;
+            color: #ff0040;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .member-description {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .member-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: rgba(0, 255, 255, 0.2);
+            color: #00ffff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid #00ffff;
+        }
+
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .stat {
+            padding: 2rem;
+            border: 1px solid #ff0040;
+            background: rgba(255, 0, 64, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            color: #ff0040;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            color: #cccccc;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-background"></div>
+
+    <header>
+        <nav>
+            <div class="logo glitch" data-text="ZTECH">ZTECH</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section style="padding-top: 8rem;">
+        <h2>ELITE TEAM</h2>
+        
+        <div class="team-grid">
+            <!-- Team Member 1 -->
+            <div class="team-member">
+                <div class="member-avatar">NA</div>
+                <h3 class="member-name">Nouralddin Abdullah</h3>
+                <div class="member-role">Full-Stack Developer</div>
+                <p class="member-description">Full-stack architect with years of experience building scalable web applications. Specializes in modern JavaScript frameworks and cloud architecture.</p>
+                <div class="member-skills">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">JavaScript</span>
+                </div>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="team-member">
+                <div class="member-avatar">YH</div>
+                <h3 class="member-name">Youssef Hassany</h3>
+                <div class="member-role">Full-Stack Developer</div>
+                <p class="member-description">Full-Stack Developer with a focus on building responsive and user-friendly web applications. Experienced in both frontend and backend technologies.</p>
+                <div class="member-skills">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Next.js</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Figma</span>
+                </div>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="team-member">
+                <div class="member-avatar">MG</div>
+                <h3 class="member-name">Mohamed Ghassam</h3>
+                <div class="member-role">Backend Engineer</div>
+                <p class="member-description">Backend specialist focused on building robust, secure, and high-performance server-side applications. Expert in database optimization and API development.</p>
+                <div class="member-skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Docker</span>
+                </div>
+            </div>
+
+            <!-- Team Member 4 -->
+            <div class="team-member">
+                <div class="member-avatar">YK</div>
+                <h3 class="member-name">Youssef Kassab</h3>
+                <div class="member-role">Frontend Developer</div>
+                <p class="member-description">Frontend expert who brings designs to life with clean, efficient code. Passionate about creating responsive and interactive user experiences.</p>
+                <div class="member-skills">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Sass</span>
+                    <span class="skill-tag">Webpack</span>
+                    <span class="skill-tag">Figma</span>
+                </div>
+            </div>
+
+        
+        </div>
+
+        <div class="team-stats">
+            <div class="stat">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Projects Deployed</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">System Monitoring</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">99.9%</span>
+                <span class="stat-label">Uptime Guarantee</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">< 2s</span>
+                <span class="stat-label">Load Times</span>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(0, 255, 255, 0.05); border: 1px solid #00ffff;">
+            <p style="font-size: 1.2rem; color: #cccccc;">Our elite development team combines years of experience with cutting-edge innovation. We don't just build websites – we architect digital futures.</p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h2>ESTABLISH CONNECTION</h2>            <div class="contact-info">
+                <div class="contact-item">
+                    <h3 style="color: #00ffff;">📱 Official Instagram</h3>
+                    <p><a href="https://www.instagram.com/ztechofficial_/" target="_blank" style="color: #00ffff; text-decoration: none;">@ztechofficial_</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3 style="color: #00ffff;">💬 Direct Messages</h3>
+                    <p>Contact us via Instagram DM</p>
+                </div>
+                <div class="contact-item">
+                    <h3 style="color: #00ffff;">🚀 Quick Connect</h3>
+                    <p>Follow for updates & projects</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333;">
+                <p>&copy; 2025 ZTECH. All systems operational. Building the future, one line of code at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
