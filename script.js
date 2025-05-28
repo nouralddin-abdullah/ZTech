@@ -198,7 +198,7 @@ class ParticleNetwork {
     animate() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
-        this.updateParticles();
+        this.updسParticles();
         this.drawConnections();
         this.drawParticles();
         
