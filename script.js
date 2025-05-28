@@ -164,8 +164,8 @@ class ParticleNetwork {
     drawConnections() {
         for (let i = 0; i < this.particles.length; i++) {
             for (let j = i + 1; j < this.particles.length; j++) {
-                const dx = this.particles[j].x - this.particles[i].x;
-                const dy = this.particles[j].y - this.particles[ij].y;
+                const dx = this.particles[i].x - this.particles[j].x;
+                const dy = this.particles[i].y - this.particles[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
                 if (distance < this.config.lineDistance) {
