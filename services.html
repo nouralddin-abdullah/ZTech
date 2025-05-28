@@ -1,208 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Services - Ztech</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        margin-top: 4rem;
+      }
 
-        .pricing-card {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 64, 0.1));
-            border: 2px solid #00ffff;
-            padding: 3rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
+      .pricing-card {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 255, 255, 0.1),
+          rgba(255, 0, 64, 0.1)
+        );
+        border: 2px solid #00ffff;
+        padding: 3rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
 
-        .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #00ffff, #ff0040, #00ffff);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+      .pricing-card::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #00ffff, #ff0040, #00ffff);
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
 
-        .pricing-card:hover::before {
-            opacity: 1;
-        }
+      .pricing-card:hover::before {
+        opacity: 1;
+      }
 
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
-        }
+      .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+      }
 
-        .pricing-title {
-            font-size: 2rem;
-            color: #00ffff;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px #00ffff;
-        }
+      .pricing-card:hover .pricing-price {
+        color: white;
+      }
 
-        .pricing-price {
-            font-size: 3rem;
-            color: #ff0040;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
+      .pricing-card:hover li.highlight {
+        color: white;
+      }
 
-        .pricing-currency {
-            font-size: 1.2rem;
-            color: #cccccc;
-            margin-bottom: 2rem;
-        }
+      .pricing-title {
+        font-size: 2rem;
+        color: #00ffff;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 10px #00ffff;
+      }
 
-        .pricing-features {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 2rem;
-        }
+      .pricing-price {
+        font-size: 3rem;
+        color: #ff0040;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
 
-        .pricing-features li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-            color: #cccccc;
-        }
+      .pricing-currency {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
 
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
+      .pricing-features {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 2rem;
+      }
 
-        .pricing-features li.highlight {
-            color: #00ffff;
-            font-weight: bold;
-        }
+      .pricing-features li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+      }
 
-        .pricing-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, #00ffff, #ff0040);
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
+      .pricing-features li:last-child {
+        border-bottom: none;
+      }
 
-        .pricing-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
-        }
+      .pricing-features li.highlight {
+        color: #ff0040;
+        font-weight: bold;
+      }
 
-        .external-option {
-            background: rgba(255, 0, 64, 0.1);
-            border: 1px solid #ff0040;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            text-align: center;
-        }
+      .pricing-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: linear-gradient(45deg, #00ffff, #ff0040);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+      }
 
-        .external-option h3 {
-            color: #ff0040;
-            margin-bottom: 1rem;
-        }
+      .pricing-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+      }
 
-        .external-option p {
-            color: #cccccc;
-            margin-bottom: 1rem;
-        }
+      .external-option {
+        background: rgba(255, 0, 64, 0.1);
+        border: 1px solid #ff0040;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        text-align: center;
+      }
 
-        .external-price {
-            font-size: 1.5rem;
-            color: #ff0040;
-            font-weight: bold;
-        }
+      .pricing-card:hover .external-option h3,
+      .pricing-card:hover .external-option .external-price,
+      .pricing-card:hover .external-option p {
+        color: white;
+      }
+
+      .external-option h3 {
+        color: #ff0040;
+        margin-bottom: 1rem;
+      }
+
+      .external-option p {
+        color: #cccccc;
+        margin-bottom: 1rem;
+      }
+
+      .external-price {
+        font-size: 1.5rem;
+        color: #ff0040;
+        font-weight: bold;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="grid-background"></div>
 
     <header>
-        <nav>
-            <div class="logo glitch" data-text="ZTECH">ZTECH</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <a href="index.html" class="main_logo">
+          <div class="logo glitch" data-text="ZTECH">ZTECH</div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+
+        <i class="fa-solid fa-bars"></i>
+      </nav>
     </header>
 
-    <section style="padding-top: 8rem;">
-        <h2>SERVICE PACKAGES</h2>
-        
-        <div class="pricing-grid">
-            <!-- Basic Package -->
-            <div class="pricing-card">
-                <h3 class="pricing-title">⚡ BASIC</h3>
-                <div class="pricing-price">8,000 to 11,000</div>
-                <div class="pricing-currency">EGP</div>
-                <ul class="pricing-features">
-                    <li>Responsive Website Design</li>
-                    <li>Up to 12 Pages</li>
-                    <li>Backend Integration</li>
-                    <li>Mobile Responsive</li>
-                    <li>Not wordpress template (Assuring custom development, and more points)</li>
-                    <li>1 Month Support, and we will guide all of your team through installation process</li>
-                    <li class="highlight">Fast Delivery (1-2 weeks)</li>
-                </ul>
-                <a href="https://www.instagram.com/ztechofficial_/" target="_blank" class="pricing-button">GET STARTED</a>
-                
-                <div class="external-option">
-                    <h3>📋 Documentation Provided?</h3>
-                    <p>Complete project documentation and source code explanation</p>
-                    <div class="external-price">+2,000 EGP</div>
-                </div>
-            </div>
-        </div>
+    <section style="padding-top: 8rem">
+      <h2>SERVICE PACKAGES</h2>
 
-        <div style="text-align: center; margin-top: 4rem; padding: 2rem; background: rgba(0, 255, 255, 0.05); border: 1px solid #00ffff;">
-            <h3 style="color: #00ffff; margin-bottom: 1rem;">💡 Need Something Custom?</h3>
-            <p style="color: #cccccc; font-size: 1.1rem;">We create bespoke solutions tailored to your specific requirements. Contact us for a personalized quote.</p>
+      <div class="pricing-grid">
+        <!-- Basic Package -->
+        <div class="pricing-card">
+          <h3 class="pricing-title">⚡ BASIC</h3>
+          <div class="pricing-price">8,000 to 11,000</div>
+          <div class="pricing-currency">EGP</div>
+          <ul class="pricing-features">
+            <li>Responsive Website Design</li>
+            <li>Up to 12 Pages</li>
+            <li>Backend Integration</li>
+            <li>Mobile Responsive</li>
+            <li>
+              Not wordpress template (Assuring custom development, and more
+              points)
+            </li>
+            <li>
+              1 Month Support, and we will guide all of your team through
+              installation process
+            </li>
+            <li class="highlight">Fast Delivery (1-2 weeks)</li>
+          </ul>
+          <a
+            href="https://www.instagram.com/ztechofficial_/"
+            target="_blank"
+            class="pricing-button"
+            >GET STARTED</a
+          >
+
+          <div class="external-option">
+            <h3>📋 Documentation Provided?</h3>
+            <p>Complete project documentation and source code explanation</p>
+            <div class="external-price">+2,000 EGP</div>
+          </div>
         </div>
+      </div>
+
+      <div
+        style="
+          text-align: center;
+          margin-top: 4rem;
+          padding: 2rem;
+          background: rgba(0, 255, 255, 0.05);
+          border: 1px solid #00ffff;
+        "
+      >
+        <h3 style="color: #00ffff; margin-bottom: 1rem">
+          💡 Need Something Custom?
+        </h3>
+        <p style="font-size: 1.1rem">
+          We create bespoke solutions tailored to your specific requirements.
+          Contact us for a personalized quote.
+        </p>
+      </div>
     </section>
 
     <footer id="contact">
-        <div class="footer-content">
-            <h2>ESTABLISH CONNECTION</h2>            <div class="contact-info">
-                <div class="contact-item">
-                    <h3 style="color: #00ffff;">📱 Official Instagram</h3>
-                    <p><a href="https://www.instagram.com/ztechofficial_/" target="_blank" style="color: #00ffff; text-decoration: none;">@ztechofficial_</a></p>
-                </div>
-                <div class="contact-item">
-                    <h3 style="color: #00ffff;">💬 Direct Messages</h3>
-                    <p>Contact us via Instagram DM</p>
-                </div>
-                <div class="contact-item">
-                    <h3 style="color: #00ffff;">🚀 Quick Connect</h3>
-                    <p>Follow for updates & projects</p>
-                </div>
-            </div>
-            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333;">
-                <p>&copy; 2025 ZTECH. All systems operational. Building the future, one line of code at a time.</p>
-            </div>
+      <div class="footer-content">
+        <h2>ESTABLISH CONNECTION</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <h3 style="color: #00ffff">📱 Official Instagram</h3>
+            <p>
+              <a
+                href="https://www.instagram.com/ztechofficial_/"
+                target="_blank"
+                style="color: #00ffff; text-decoration: none"
+                >@ztechofficial_</a
+              >
+            </p>
+          </div>
+          <div class="contact-item">
+            <h3 style="color: #00ffff">💬 Direct Messages</h3>
+            <p>Contact us via Instagram DM</p>
+          </div>
+          <div class="contact-item">
+            <h3 style="color: #00ffff">🚀 Quick Connect</h3>
+            <p>Follow for updates & projects</p>
+          </div>
         </div>
+        <div
+          style="
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+          "
+        >
+          <p>
+            &copy; 2025 ZTECH. All systems operational. Building the future, one
+            line of code at a time.
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
